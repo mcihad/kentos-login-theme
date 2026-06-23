@@ -24,6 +24,6 @@ jobs:
       - run: pnpm run build-keycloak-theme
       - uses: softprops/action-gh-release@v2
         with:
-          files: dist_keycloak/keycloak-theme-*.jar
+          files: dist_keycloak/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

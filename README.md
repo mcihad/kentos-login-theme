@@ -19,7 +19,6 @@ A modern, production-ready custom theme for Keycloak built with React, TypeScrip
 
 - **Developer Experience**
   - TypeScript for type safety
-  - Storybook for component development - [View Live Storybook](https://cloakwise-io.github.io/keycloak-custom-theme)
   - Hot module replacement with Vite
   - ESLint and Prettier for code quality
 
@@ -51,17 +50,6 @@ pnpm dev
 
 The theme will be available at `http://localhost:5173` (or the port Vite assigns).
 
-### Storybook
-
-View and develop components in isolation:
-
-```bash
-pnpm storybook
-```
-
-Storybook will be available at `http://localhost:6006`.
-
-**Live Storybook:** [https://cloakwise-io.github.io/keycloak-custom-theme](https://cloakwise-io.github.io/keycloak-custom-theme)
 
 ## Building the Theme
 
@@ -189,7 +177,6 @@ For deploying Keycloak on Kubernetes, follow the official guide:
 
 ## Documentation
 
-- [Live Storybook](https://cloakwise-io.github.io/keycloak-custom-theme) - Interactive component documentation
 - [Keycloakify Documentation](https://docs.keycloakify.dev)
 - [shadcn/ui Documentation](https://ui.shadcn.com)
 - [Tailwind CSS Documentation](https://tailwindcss.com)

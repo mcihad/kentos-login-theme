@@ -34,6 +34,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
   const { msg, msgStr, currentLanguage, enabledLanguages } = i18n;
 
   const { auth, url, client, message, isAppInitiatedAction } = kcContext;
+  const logoUrl = client?.attributes?.logoUri || (url?.resourcesPath ? `${url.resourcesPath}/dist/logo.png` : "/logo.png");
+  const clientName = client?.name || client?.clientId || "Keycloak";
+  const realmDisplayName = kcContext.realm.displayName;
 
   useEffect(() => {
     document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
@@ -103,7 +106,31 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                     <DisplayMessage message={message} />
                   </div>
                 )}
+
                 <TemplateShell className="w-full rounded-none md:rounded-xl border-0 md:border shadow-none md:shadow-sm">
+                  {/* Custom Header inside the box: Logo on the left, Realm & Client Name on the right */}
+                  <div className="flex items-center gap-4 px-6 pb-4 border-b border-border/40">
+                    <div className="p-1 bg-background rounded-lg border border-border/50 shadow-sm flex items-center justify-center">
+                      <img
+                        src={logoUrl}
+                        alt="Logo"
+                        className="h-10 w-auto max-w-[100px] object-contain"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = "/logo.png";
+                        }}
+                      />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider truncate">
+                        {realmDisplayName}
+                      </span>
+                      <span className="text-sm font-bold text-foreground truncate leading-tight mt-0.5">
+                        {clientName}
+                      </span>
+                    </div>
+                  </div>
+
                   {headerNode && !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) && (
                     <TemplateHeader>
                       <TemplateTitle>{headerNode}</TemplateTitle>

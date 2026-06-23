@@ -10,7 +10,12 @@ export default defineConfig({
     react(),
     tailwindcss(),
     keycloakify({
-      accountThemeImplementation: "none"
+      themeName: "kentos",
+      accountThemeImplementation: "none",
+      keycloakVersionTargets: {
+        "22-to-25": "kentos-theme-for-kc-22-to-25.jar",
+        "all-other-versions": "kentos-theme-for-kc-all-other-versions.jar"
+      }
     }),
   ],
   resolve: {
